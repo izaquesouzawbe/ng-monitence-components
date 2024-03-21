@@ -12,6 +12,9 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
     CommonModule,
     NzTableModule,
     NzModalModule
+  ],
+  exports: [
+    MonModalSearchComponent
   ]
 })
 export class NgMonitenceComponentsModule { }
