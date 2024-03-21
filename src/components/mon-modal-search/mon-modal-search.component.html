@@ -1,0 +1,22 @@
+<nz-modal [(nzVisible)]="isVisible" [nzTitle]="title" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()"
+    nzWidth="50%">
+
+    <ng-container *nzModalContent>
+
+        <nz-table #headerTable [nzData]="dataList" [nzPageIndex]="currentPageIndex" [nzPageSize]="pageSize"
+            (nzPageIndexChange)="onPageIndexChange($event)" [nzScroll]="{ y: '340px' }">
+            <thead>
+                <tr>
+                    <th *ngFor="let field of fieldsToShow">{{ field.fieldDescription }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of headerTable.data; let i = index" (dblclick)="onModelSelect(i); handleOk();" (click)="onModelSelect(i)" [ngClass]="{'selected': i === selectedIndexOriginal}">
+                    <td *ngFor="let field of fieldsToShow">{{ getFieldData(data, field.fieldName) }}</td>
+                </tr>
+            </tbody>
+        </nz-table>
+
+    </ng-container>
+
+</nz-modal>
